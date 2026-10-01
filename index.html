@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f8f6">
+  <title>把今天带走 · 照片工作室</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="index.html">把今天带走<span>PHOTO STUDIO</span></a><div class="topbar-actions"><button id="historyToggle" class="icon-button" title="我的订单" aria-label="我的订单"><i data-lucide="history"></i></button><button id="operatorToggle" class="icon-button" title="商家订单" aria-label="商家订单"><i data-lucide="store"></i></button></div></header>
+  <main id="customerView">
+    <section id="selectionStage" class="stage selection-stage">
+      <div class="stage-heading"><span class="step-label">01 / 选择风格</span><h1>先选今天的感觉。</h1></div>
+      <fieldset id="categoryPicker" class="category-picker"><legend>照片类型 <small>按照片内容选择</small></legend>
+        <label><input type="radio" name="category" value="scene" checked><span class="category-card"><i data-lucide="mountain"></i><span><strong>场景</strong><small>风景、建筑、街道和旅途氛围</small></span></span></label>
+        <label><input type="radio" name="category" value="portrait"><span class="category-card"><i data-lucide="user-round"></i><span><strong>人像</strong><small>人物和同行纪念照</small></span></span></label>
+      </fieldset>
+      <fieldset id="stylePicker" class="style-picker"><legend>生成风格 <small>预览均为处理后的成品明信片</small></legend></fieldset>
+      <ol class="output-note">
+        <li>每次只生成一张完整的 6 寸单面明信片，方向会跟随原图。</li>
+        <li>对比图只作风格参考；如想同时保存原图与生成后的明信片，可另外咨询店主打印原图。</li>
+        <li>只想打印照片、不需要生成风格，也可以直接联系店主。</li>
+      </ol>
+      <button id="confirmStyleBtn" class="primary"><span>确定风格，上传照片</span><i data-lucide="arrow-right"></i></button>
+      <p id="selectionStatus" class="demo-note">先选类型和风格，再上传照片</p>
+    </section>
+    <section id="uploadStage" class="stage upload-stage hidden">
+      <button id="backToSelection" class="back-button"><i data-lucide="arrow-left"></i>返回选风格</button>
+      <div class="stage-heading"><span class="step-label">02 / 上传照片</span><h1>把今天交给我。</h1></div>
+      <input id="photoInput" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+      <button id="uploadEmpty" class="upload-empty"><i data-lucide="image-plus"></i><strong>选择今天的照片</strong><span>JPG · PNG · WEBP</span></button>
+      <div id="photoPanel" class="hidden">
+        <div class="section-line"><span>已选照片</span><button id="changePhoto" class="text-button">换一张</button></div>
+        <div class="upload-preview"><img id="sourcePreview" alt="完整上传照片预览"></div>
+      </div>
+      <label class="grant-entry">店主授权码（如有）<input id="grantCodeInput" type="text" inputmode="latin" autocomplete="off" placeholder="输入店主提供的授权码"></label>
+      <button id="generateBtn" class="primary" type="button" disabled><span>生成我的成品</span><i data-lucide="sparkles"></i></button>
+      <p id="generateStatus" class="demo-note" role="status">上传照片后，点击生成并等待成品</p>
+    </section>
+    <section id="candidateStage" class="stage candidate-stage hidden">
+      <button id="backToUpload" class="back-button"><i data-lucide="arrow-left"></i>返回照片</button>
+      <div class="stage-heading"><span class="step-label">02 / 生成结果</span><h1>这一张，就是今天。</h1></div>
+      <div id="candidateCards" class="candidate-cards" role="group" aria-label="候选图片"></div>
+      <p id="candidateStatus" class="demo-note">成品已生成，可以添加日期和一句话</p>
+      <button id="enterEditor" class="primary"><span>开始添加文字</span><i data-lucide="arrow-right"></i></button>
+    </section>
+    <section id="editorStage" class="editor-stage hidden">
+      <div class="editor-top"><button id="backToCandidates" class="icon-button" type="button" title="返回候选图" aria-label="返回候选图"><i data-lucide="arrow-left"></i></button><div><strong>我的成品</strong><small>6 英寸 · 单面</small></div><button id="saveOrder" class="save-button" type="button"><i data-lucide="check"></i><span>完成</span></button></div>
+      <div id="previewArea" class="editor-preview-area"><div id="canvasGuide" class="canvas-guide hidden" role="status"></div><canvas id="editorCanvas" width="1200" height="1800" tabindex="0" aria-label="成品画布"></canvas><span id="dimensionLabel" class="dimension-label">4 × 6 in</span></div>
+      <div class="editor-controls"><div class="panel-heading"><span id="panelTitle">成品版式</span><div class="compact-actions"><button id="undo" class="icon-button" title="撤销" aria-label="撤销"><i data-lucide="undo-2"></i></button><button id="redo" class="icon-button" title="重做" aria-label="重做"><i data-lucide="redo-2"></i></button><button id="collapsePanel" class="icon-button" title="收起选项" aria-label="收起选项"><i data-lucide="chevron-down"></i></button></div></div><div id="editorGuide" class="editor-guide" role="status">拖动画布中的照片调整位置</div><div id="toolPanel" class="tool-panel"></div>
+      <nav class="tool-dock" aria-label="成品编辑工具"><button class="tool" data-tool="photo"><i data-lucide="crop"></i><span>照片</span></button><button class="tool active" data-tool="date"><i data-lucide="calendar-days"></i><span>日期</span></button><button class="tool" data-tool="caption"><i data-lucide="type"></i><span>一句话</span></button><button class="tool" data-tool="sticker"><i data-lucide="sticker"></i><span>贴纸</span></button></nav></div>
+    </section>
+  </main>
+  <main id="operatorView" class="stage hidden"><button id="customerToggle" class="back-button"><i data-lucide="arrow-left"></i>返回工作室</button><div class="stage-heading"><span class="step-label">ORDER DESK</span><h1>订单队列</h1></div><p class="demo-note">核对顾客报出的订单号和微信到账备注，再确认付款。</p><section class="grant-panel"><strong>额外生成授权</strong><small>顾客需要重做时，生成一次性授权码给他。</small><div><select id="grantUses" aria-label="授权生成次数"><option value="1">1 次</option><option value="2">2 次</option><option value="3">3 次</option></select><button id="createGrant" class="small-action" type="button">生成授权码</button></div><output id="grantResult" class="grant-result" aria-live="polite"></output></section><div id="queue" class="queue"></div></main>
+  <main id="historyView" class="stage hidden"><button id="historyBack" class="back-button"><i data-lucide="arrow-left"></i>返回工作室</button><div class="stage-heading"><span class="step-label">MY ORDERS</span><h1>历史订单</h1></div><p class="demo-note">忘记备注时，打开这页把订单号给商家看。</p><div id="historyList" class="history-list"></div></main>
+  <dialog id="stylePreviewDialog" class="style-preview-dialog"><div class="dialog-head"><div><h2 id="stylePreviewTitle">风格示例</h2><p id="stylePreviewNote">上方为原图，下方为风格成图</p></div><button id="closeStylePreview" class="icon-button" aria-label="关闭预览" title="关闭预览"><i data-lucide="x"></i></button></div><div class="style-preview-tabs" role="tablist" aria-label="风格示例查看方式"><button class="active" data-preview-mode="result" role="tab">成图</button><button data-preview-mode="original" role="tab">原图</button><button data-preview-mode="compare" role="tab">对比</button></div><div id="stylePreviewMedia" class="style-preview-media"></div><p class="style-preview-footnote">这里仅用于了解风格，实际生成仍只会返回一张处理后的明信片。</p></dialog>
+  <dialog id="finishDialog"><div class="dialog-head"><h2>今天，收好了。</h2><button id="closeFinish" class="icon-button" aria-label="关闭" title="关闭"><i data-lucide="x"></i></button></div><img id="finalPreview" alt="最终打印图片"><p id="exportSize">6 英寸单面</p><section class="order-summary"><span>务必记住订单号</span><strong id="orderNumber">生成中…</strong><button id="copyOrder" class="icon-button" title="复制订单号" aria-label="复制订单号"><i data-lucide="copy"></i></button></section><p class="order-callout">现场人多时，商家会根据这个订单号叫号。请先截图或复制保存。</p><section class="payment-box"><div class="payment-title"><i data-lucide="scan-line"></i><strong>微信扫码付款</strong></div><a id="paymentLink" class="payment-link hidden" target="_blank" rel="noopener">打开收款码</a><img id="paymentQr" class="payment-qr hidden" alt="微信收款码"><p id="paymentHint">付款时请在微信备注里填写订单号，商家核对到账后安排打印。</p><button id="markCustomerPaid" class="secondary"><i data-lucide="check"></i>我已付款，通知商家</button><button id="refreshPayment" class="text-button">刷新付款状态</button></section><button id="downloadFinal" class="primary"><i data-lucide="download"></i>下载成品 JPG</button><button id="saveLocal" class="secondary">保存到本机订单</button><button id="returnHome" class="secondary hidden"><i data-lucide="house"></i>返回首页，继续打印下一张</button><p id="saveStatus" class="demo-note" role="status">正在提交订单…</p></dialog>
+  <dialog id="qrDialog" class="qr-dialog"><div class="dialog-head"><h2>微信收款码</h2><button id="closeQr" class="icon-button" type="button" aria-label="关闭收款码" title="关闭"><i data-lucide="x"></i></button></div><img id="qrLarge" alt="放大的微信收款码"><p>长按图片保存，或用另一部手机扫码。</p></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="lucide.min.js"></script><script src="backend-config.js"></script><script src="app.js"></script>
+</body>
+</html>
