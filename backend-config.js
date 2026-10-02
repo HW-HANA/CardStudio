@@ -1,7 +1,7 @@
 // Fill this file when the API is ready. Keep API keys on the server.
 window.CARD_STUDIO_CONFIG = {
   enabled: true,
-  apiBase: 'http://127.0.0.1:8787',
+  apiBase: 'https://cardstudio-production.up.railway.app',
   // Same-origin deployment can use an empty string. Use an absolute URL for a separate API.
   generatePath: '/api/generate',
   orderPath: '/api/orders',
