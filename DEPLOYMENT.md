@@ -9,7 +9,7 @@
 在 Railway 从 GitHub 导入项目，Root Directory 设为 `server`。使用：
 
 ```text
-Build Command: npm ci
+Build Command: npm install --omit=dev
 Start Command: npm start
 ```
 
