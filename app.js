@@ -73,19 +73,23 @@ document.addEventListener('change',e=>{if(e.target.matches('input[name="style"]'
 function sleep(ms){return new Promise(resolve=>setTimeout(resolve,ms));}
 async function responseJson(response){const data=await response.json().catch(()=>null);if(!response.ok)throw new Error(data?.message||data?.error||`HTTP ${response.status}`);return data;}
 let merchantLoginInProgress=false;
+let merchantToken='';
 async function merchantRequest(path,options={}){
-  const requestOptions=Object.assign({},options,{credentials:'include'});
-  let response=await fetch(apiUrl(path),requestOptions);
+  const request=()=>fetch(apiUrl(path),Object.assign({},options,{headers:Object.assign({},options.headers,merchantToken?{Authorization:`Bearer ${merchantToken}`}:{})}));
+  let response=await request();
   if(response.status!==401)return response;
+  merchantToken='';
   if(merchantLoginInProgress)throw new Error('商家登录进行中');
   const password=window.prompt('请输入商家密码');
   if(!password)throw new Error('已取消商家登录');
   merchantLoginInProgress=true;
   try{
-    const login=await fetch(apiUrl(backend.merchantLoginPath),{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});
+    const login=await fetch(apiUrl(backend.merchantLoginPath),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password})});
     if(!login.ok)throw new Error('商家密码不正确');
+    merchantToken=(await login.json()).token||'';
+    if(!merchantToken)throw new Error('商家登录失败');
   }finally{merchantLoginInProgress=false;}
-  return fetch(apiUrl(path),requestOptions);
+  return request();
 }
 function normaliseCandidate(item,index){
   let url=typeof item==='string'?item:(item?.url||item?.image||item?.imageUrl||item?.src);

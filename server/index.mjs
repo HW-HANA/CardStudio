@@ -16,7 +16,7 @@ const orderDir = path.join(storageDir, 'orders');
 const dbPath = path.join(storageDir, 'db.json');
 const port = Number(process.env.PORT || 8787);
 const app = express();
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 const upload = multer({dest: uploadDir, limits: {fileSize: 25 * 1024 * 1024}});
 let db = {orders: [], jobs: [], grants: []};
 let writeQueue = Promise.resolve();
@@ -100,7 +100,8 @@ function readCookie(req, name) {
 }
 
 function validSession(req) {
-  const token = readCookie(req, 'merchant_session');
+  const authorization = req.get('Authorization') || '';
+  const token = authorization.startsWith('Bearer ') ? authorization.slice(7) : readCookie(req, 'merchant_session');
   if (!token) return false;
   const [encoded, signature] = token.split('.');
   if (!encoded || !signature) return false;
@@ -202,7 +203,7 @@ app.post('/api/admin/login', (req, res) => {
   const ttl = Number(process.env.SESSION_TTL_SECONDS || 28800);
   const token = signSession({role: 'merchant', exp: Date.now() + ttl * 1000});
   res.setHeader('Set-Cookie', sessionCookie(token, ttl));
-  res.json({ok: true});
+  res.json({ok: true, token});
 });
 
 app.post('/api/admin/generation-grants', requireMerchant, async (req, res) => {
