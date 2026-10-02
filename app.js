@@ -184,6 +184,7 @@ $('#generateBtn').onclick = async () => {
     design=newDesign('ai-output');design.outputMode='postcard';drafts={};undoStack=[];redoStack=[];
     setStatus('candidateStatus',remoteItems.length?'AI 已生成一张成品明信片':'本地预览模式：成品使用原片填充');
     show('editorStage');activeLayer=null;renderPanel('photo');render();updateHistory();
+    generationRequestId='';
     setStatus('generateStatus','成品已准备好，可以添加日期和一句话');
   } catch(error) { if(error.name!=='AbortError')toast(error.message||'无法生成成品，请重试'); setStatus('generateStatus','生成失败，可重试'); } finally {button.disabled=false;button.classList.remove('is-loading');button.removeAttribute('aria-busy');if(label)label.textContent='生成我的成品';generateController=null;icons();}
 };
@@ -196,7 +197,8 @@ function makeCards(preset){
   return {original:{x:W*.5,y:H*.25,w:W,h:H*.5,angle:0},generated:{x:W*.5,y:H*.75,w:W,h:H*.5,angle:0}};
 }
 $('#enterEditor').onclick=()=>{if(!design)design=newDesign('ai-output');show('editorStage');activeLayer=null;renderPanel('date');render();updateHistory();};
-$('#backToUpload').onclick=()=>show('uploadStage'); $('#backToCandidates').onclick=()=>show('uploadStage');
+$('#backToUpload').onclick=()=>show('uploadStage');
+$('#backToCandidates').onclick=()=>{show('uploadStage');$('#generateBtn span').textContent='再生成一张';setStatus('generateStatus','不满意可以再生成；两次生成至少间隔 30 秒。如提示操作频繁，请联系店主领取授权码。');};
 function photoRects() {
   if(design.layout==='compare')return Object.fromEntries(Object.entries(design.cards).map(([key,c])=>[key,{x:c.x-c.w/2,y:c.y-c.h/2,w:c.w,h:c.h}]));
   if(design.layout==='postcard'||design.layout==='ai-output')return {generated:{x:0,y:0,w:W,h:H}};
