@@ -24,8 +24,8 @@ window.CARD_STUDIO_CONFIG = {
 
 整体呈现平面扫描纸质作品的触感：自然纸纤维、干墨缺口、细微孔版印刷颗粒、轻微不均匀着墨。画面有清晰的主次关系、充足的呼吸空间和适度未完成感，能够脱离原照片独立成立。
 
-禁止原照片碎片、写实区域、完整风景照搬、照片滤镜、真实阴影、立体纸张、卷边、胶带、邮票、装饰网格、随机符号、密集手账拼贴、可爱卡通、动漫、儿童绘本风、光滑矢量图、商业广告排版、霓虹、电影光效、景深、Logo与水印。直接生成图片。`, previewTitle: '成品明信片', previewOriginal: 'assets/previews/styles/ink-original.jpeg', previewImage: 'assets/previews/styles/ink-result.png'},
-    crayon: {category: 'scene', label: '蜡笔版画', description: '蜡笔颗粒 · 明亮有趣', skill: 'scene-crayon-print', prompt: `请将上传的照片重新制作成以下风格：横屏4:3，双层纸张质感，外层是米白色粗糙粗纤维手工纸底纹，画面中间一块低饱和XXX色（根据每张照片调整颜色，禁止只生成单色，必须两种颜色或以上）横向窄矩形色块区域，用米白色哑光蜡粉笔手绘简化提取照片里的主体轮廓，极简松弛手绘线条，造型概括稚拙，去掉繁杂细节，保留物象核心形态，手绘随性不规整，轻微粗糙笔触感，色块上下大面积留白。复古安静治愈氛围，淡淡的做旧纸肌理， Risograph孔版印刷微弱颗粒噪点，低饱和莫兰迪配色，干净简约文艺卡片风格，无复杂阴影，无写实质感，没有多余装饰。`, previewTitle: '成品明信片', previewOriginal: 'assets/previews/styles/crayon-original.jpeg', previewImage: 'assets/previews/styles/crayon-result.png'},
+禁止原照片碎片、写实区域、完整风景照搬、照片滤镜、真实阴影、立体纸张、卷边、胶带、邮票、装饰网格、随机符号、密集手账拼贴、可爱卡通、动漫、儿童绘本风、光滑矢量图、商业广告排版、霓虹、电影光效、景深、Logo与水印。直接生成图片。`, previewTitle: '成品明信片', previewOriginal: 'assets/previews/styles/ink-original.webp', previewImage: 'assets/previews/styles/ink-result.webp'},
+    crayon: {category: 'scene', label: '蜡笔版画', description: '蜡笔颗粒 · 明亮有趣', skill: 'scene-crayon-print', prompt: `请将上传的照片重新制作成以下风格：横屏4:3，双层纸张质感，外层是米白色粗糙粗纤维手工纸底纹，画面中间一块低饱和XXX色（根据每张照片调整颜色，禁止只生成单色，必须两种颜色或以上）横向窄矩形色块区域，用米白色哑光蜡粉笔手绘简化提取照片里的主体轮廓，极简松弛手绘线条，造型概括稚拙，去掉繁杂细节，保留物象核心形态，手绘随性不规整，轻微粗糙笔触感，色块上下大面积留白。复古安静治愈氛围，淡淡的做旧纸肌理， Risograph孔版印刷微弱颗粒噪点，低饱和莫兰迪配色，干净简约文艺卡片风格，无复杂阴影，无写实质感，没有多余装饰。`, previewTitle: '成品明信片', previewOriginal: 'assets/previews/styles/crayon-original.webp', previewImage: 'assets/previews/styles/crayon-result.webp'},
     travelSticker: {category: 'scene', label: '旅行贴纸', description: '风景纸片 · 旅行小物', skill: 'travel-paper-collage', prompt: `# 旅途纸片集
 
 以用户提供的照片为内容来源，为每张照片重新组织一幅具有纸张触感的旅行插画。将地点的空间关系、值得记住的主体和少量日常细节结合起来，让成品适合收藏、分享和打印。
@@ -66,7 +66,7 @@ window.CARD_STUDIO_CONFIG = {
 
 本技能文本为本次独立撰写，用户可以修改并用于自己的工作流程，包括商业项目。使用照片、字体、商标、外部素材及生成服务时分别遵守相关授权与条款。具体成品仍须结合实际内容判断权利状况，技能本身不作不侵权保证。
 
-编辑在聊天中试用`, previewTitle: '成图示意', previewSplit: false, commercialUseAllowed: true, previewOriginal: 'assets/previews/styles/travel-sticker-original.jpg', previewImage: 'assets/previews/styles/travel-sticker-result.png'},
+编辑在聊天中试用`, previewTitle: '成图示意', previewSplit: false, commercialUseAllowed: true, previewOriginal: 'assets/previews/styles/travel-sticker-original.webp', previewImage: 'assets/previews/styles/travel-sticker-result.webp'},
     tapeCollage: {category: 'scene', label: '胶带拼贴', description: '和纸胶带 · 留白拼贴', skill: 'make-tape-collage', prompt: `---
 name: make-tape-collage
 description: Transform a supplied photo or text description into a clean, tactile tape-collage raster artwork, or pair a faithfully preserved borderless photo print with a spacious warm-white paper panel containing a compact tape-built interpretation. Use for requests mentioning washi tape, masking-tape art, tape collage, 胶带拼贴, 和纸胶带拼贴, 胶带画, 拼贴手账, 保留原图, or photo-and-collage paper layouts.
@@ -172,7 +172,7 @@ Inspect the result before delivery. Confirm all of the following:
 
 If a semantic or tape-material check fails, make at most one targeted generative revision and re-check. Repeat invariants in the revision prompt. Correct geometry, paper, photo mounting, or typography deterministically instead of regenerating. Do not casually alter an approved subject, palette, layout, or exact text while correcting another issue.
 
-Return the final image inline. For workspace-bound work, copy the selected file into the requested project location and report its path, the final prompt, and that the built-in generation path was used.`, previewTitle: '成图示意', previewSplit: true, commercialUseAllowed: true, previewOriginal: 'assets/previews/styles/tape-collage-original.jpg', previewImage: 'assets/previews/styles/tape-collage-result.png'},
+Return the final image inline. For workspace-bound work, copy the selected file into the requested project location and report its path, the final prompt, and that the built-in generation path was used.`, previewTitle: '成图示意', previewSplit: true, commercialUseAllowed: true, previewOriginal: 'assets/previews/styles/tape-collage-original.webp', previewImage: 'assets/previews/styles/tape-collage-result.webp'},
     portraitChalk: {category: 'portrait', label: '人像粉笔', description: '粉笔手绘 · 保留人物神态', skill: 'portrait-chalk', prompt: `请将我上传的照片制作成一张独立的高级设计海报，不多图拼接，采用3:4竖版构图
 
 理解原照片最值得被记住的**核心主题、主体关系、结构走势、情绪与视觉隐喻**，再重构为**复古纸张肌理的粉彩蜡笔涂鸦插画**。不要逐物复制照片，也不要把所有内容完整转绘，只保留最能代表原物的轮廓、姿态、方向和视觉记忆点，通过删减、概括、轻微夸张和重新组合，使人一眼感受到它与上方照片之间的对应关系。
@@ -189,7 +189,7 @@ Return the final image inline. For workspace-bound work, copy the selected file 
 
 文字少量介入，不限制语种。可从主体、动作、情绪、记忆或隐喻中自由提炼短句或文字片段，使用**轻薄、疏朗、带轻微字距不齐与旧式机械印字误差的打字排版字体**，颜色使用清晰但不刺眼的灰褐、柔黑、深蓝灰或与主体呼应的深色，确保在浅色纸面上有足够可读性。文字自然散落在留白区域，与主体和涂鸦形成图文混排，不做固定标题模板。
 
-整体呈现**极浅纸面、粗颗粒蜡笔轮廓、少量粉彩填色、极简涂鸦符号、小尺度主体与大量艺术留白**共同构成的高级治愈视觉。重点是让主体与小元素清楚浮现在浅色纸面上，同时保持松弛、天真、温柔和成熟的编辑构图意识。避免深色牛皮纸、暗棕背景、低对比线条、背景与主体糊成一团、精细描边、写实转绘、复杂小图标、背景填满、光滑矢量、3D感和商业模板感。`, previewTitle: '成品明信片', previewSplit: false, previewOriginal: 'assets/previews/styles/portrait-chalk-original.jpeg', previewImage: 'assets/previews/styles/portrait-chalk-result.png'},
+整体呈现**极浅纸面、粗颗粒蜡笔轮廓、少量粉彩填色、极简涂鸦符号、小尺度主体与大量艺术留白**共同构成的高级治愈视觉。重点是让主体与小元素清楚浮现在浅色纸面上，同时保持松弛、天真、温柔和成熟的编辑构图意识。避免深色牛皮纸、暗棕背景、低对比线条、背景与主体糊成一团、精细描边、写实转绘、复杂小图标、背景填满、光滑矢量、3D感和商业模板感。`, previewTitle: '成品明信片', previewSplit: false, previewOriginal: 'assets/previews/styles/portrait-chalk-original.webp', previewImage: 'assets/previews/styles/portrait-chalk-result.webp'},
     portraitHeart: {category: 'portrait', label: '人像剪纸爱心', description: '细红线爱心 · 平面剪纸', skill: 'red-thread-paper-keepsake', prompt: `---
 name: red-thread-paper-keepsake
 description: 将用户照片重新创作为浪漫的平面剪纸与丝网印刷风纪念卡，结合自然纸面留白、场景形块、主体跨界和细红线爱心。用于情侣、朋友、家人、单人及人与宠物的照片艺术化处理，自动根据照片调整构图、配色和爱心轮廓。
@@ -274,7 +274,7 @@ description: 将用户照片重新创作为浪漫的平面剪纸与丝网印刷�
 
 发现明确缺陷时，只针对该缺陷修改，保留已经正确的部分。
 
-交付图片，并用一句简短说明介绍本次构图。除非用户要求，不展示内部分析和完整生图指令。`, previewTitle: '成品明信片', previewSplit: false, previewOriginal: 'assets/previews/styles/portrait-heart-original.png', previewImage: 'assets/previews/styles/portrait-heart-result.png'}
+交付图片，并用一句简短说明介绍本次构图。除非用户要求，不展示内部分析和完整生图指令。`, previewTitle: '成品明信片', previewSplit: false, previewOriginal: 'assets/previews/styles/portrait-heart-original.webp', previewImage: 'assets/previews/styles/portrait-heart-result.webp'}
   },
   // Bundled from the provided font file. Replace only if the licensed font changes.
   fontFaces: {
